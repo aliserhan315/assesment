@@ -1,22 +1,8 @@
-import React, { useState } from 'react';
+'use client';
 
-const highlightsmatch = (text, search) => {
-  if (!search) return text;
-  const parts = text.split(new RegExp(`(${search})`, 'gi'));
-  return parts.map((part, i) =>
-    part.toLowerCase() === search.toLowerCase() ? (
-      <span key={i} className="bg-yellow-300">{part}</span>
-    ) : (
-      part
-    )
-  );
-};
+import React from 'react';
 
-function SearchBox() {
-  const [searchText, setSearchText] = useState("");
-
-  const textToHighlight = "This is a sample text to highlight the search functionality.";
-
+function SearchBox({ searchText, setSearchText }) {
   return (
     <div className="max-w-xl mx-auto mt-10">
       <input
@@ -26,10 +12,8 @@ function SearchBox() {
         onChange={(e) => setSearchText(e.target.value)}
         value={searchText}
       />
-      <p className="mt-4 text-lg">
-        {highlightsmatch(textToHighlight, searchText)}
-      </p>
     </div>
+    //i used my search box that i used in my monster project before with some edits 
   );
 }
 
